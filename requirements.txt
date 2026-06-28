@@ -1,0 +1,19 @@
+# Step 1: talk to the local Ollama model
+ollama>=0.3.0
+
+# Step 3b: embeddings + vector database
+sentence-transformers>=2.7.0
+chromadb>=0.5.0
+
+# Step 4: web search (no API key required)
+ddgs>=5.0.0
+
+# Step 5: multi-agent orchestration
+langgraph>=0.2.0
+
+# Step 7: API layer
+fastapi>=0.111.0
+uvicorn>=0.30.0
+
+# Step 9: demo UI
+streamlit>=1.37.0

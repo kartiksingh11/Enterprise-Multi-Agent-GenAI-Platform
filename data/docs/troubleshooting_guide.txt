@@ -1,0 +1,34 @@
+Troubleshooting Guide
+
+Error: "Connection timeout"
+This usually means the request took longer than 30 seconds to complete.
+Check your network connection first. If you're making bulk requests,
+consider batching them into smaller groups of 50 or fewer items per
+request, since large payloads are the most common cause of timeouts.
+
+Error: "401 Unauthorized"
+Your API key is missing, invalid, or has been revoked. Verify the key in
+your Developer Settings page and ensure it's included correctly in the
+Authorization header as described in the API Authentication Guide.
+
+Error: "429 Too Many Requests"
+You've exceeded your rate limit. Wait for the duration specified in the
+Retry-After response header before sending another request. Consider
+upgrading your plan if this happens frequently.
+
+Error: "500 Internal Server Error"
+This indicates a problem on our end, not yours. Check the status page at
+status.example.com for ongoing incidents. If no incident is listed,
+contact support with the request ID from the response headers.
+
+Slow response times:
+If individual requests are consistently slow (over 2 seconds), check
+whether you're requesting large result sets without pagination. Use the
+`limit` and `offset` query parameters to paginate results instead of
+fetching everything at once.
+
+Webhook delivery failures:
+Webhooks are retried up to 3 times with exponential backoff (1 minute,
+5 minutes, 15 minutes) before being marked as failed. You can view
+delivery logs and manually retry failed webhooks from the Webhooks
+dashboard.

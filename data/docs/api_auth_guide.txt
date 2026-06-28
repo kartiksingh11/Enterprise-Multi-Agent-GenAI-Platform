@@ -1,0 +1,31 @@
+API Authentication Guide
+
+All requests to the platform API must be authenticated using an API key.
+API keys can be generated from the Developer Settings page under your
+account. Each account can have up to 5 active API keys at a time.
+
+To authenticate a request, include your API key in the Authorization
+header using the Bearer scheme:
+
+Authorization: Bearer YOUR_API_KEY
+
+API keys never expire automatically, but they can be revoked manually at
+any time from the Developer Settings page. Once revoked, a key cannot be
+reactivated; you must generate a new one.
+
+Rate limits: Free tier accounts are limited to 100 requests per minute.
+Pro tier accounts are limited to 1,000 requests per minute. Enterprise
+accounts have custom rate limits negotiated per contract.
+
+If you exceed your rate limit, the API will return a 429 status code
+with a Retry-After header indicating how many seconds to wait before
+retrying.
+
+For OAuth 2.0 authentication (used for user-delegated access rather than
+service-to-service calls), see the separate OAuth Integration Guide.
+OAuth tokens expire after 1 hour and must be refreshed using the refresh
+token endpoint.
+
+Never include your API key in client-side code, public repositories, or
+URL query parameters, since these can be logged or exposed. Always use
+server-side environment variables to store API keys.
